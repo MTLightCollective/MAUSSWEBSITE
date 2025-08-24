@@ -114,7 +114,81 @@
           </div>
         </aside>
       </div>
-    </main>
+    
+<section id="contact" class="wrapper card" role="region" aria-labelledby="contact-title">
+  <h2 id="contact-title">Contact par courriel</h2>
+  <p class="small">Remplissez ce formulaire — c’est un simple envoi par courriel. Vous recevrez un message de confirmation à l’écran.</p>
+
+  <form id="contact-form" class="contact-form" action="/api/contact" method="POST" novalidate>
+    <div class="form-grid">
+      <div class="field">
+        <label for="cf-name">Nom complet</label>
+        <input id="cf-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="cf-email">Courriel</label>
+        <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+      </div>
+      <div class="field">
+        <label for="cf-subject">Objet</label>
+        <input id="cf-subject" name="subject" type="text" placeholder="Votre objet" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="message" rows="6" required></textarea>
+    </div>
+
+    <!-- Honeypot (anti-spam) -->
+    <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+    <button class="btn primary" type="submit">Envoyer le message</button>
+    <p class="form-status" aria-live="polite" role="status"></p>
+  </form>
+</section>
+
+<section id="rdv" class="wrapper card" role="region" aria-labelledby="rdv-title">
+  <h2 id="rdv-title">Prendre un rendez-vous</h2>
+  <p class="small">Choisissez une date et un créneau de 30 minutes (entre 09:00 et 17:00). Je vous répondrai ensuite avec une invitation Google Meet.</p>
+
+  <form id="rdv-form" class="rdv-form" action="/api/contact" method="POST" novalidate>
+    <div class="form-grid">
+      <div class="field">
+        <label for="rdv-name">Nom complet</label>
+        <input id="rdv-name" name="name" type="text" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="rdv-email">Courriel</label>
+        <input id="rdv-email" name="email" type="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="rdv-date">Date souhaitée</label>
+        <input id="rdv-date" name="_date" type="date" required>
+      </div>
+      <div class="field">
+        <label for="rdv-slot">Créneau (30 min)</label>
+        <select id="rdv-slot" name="_slot" required></select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="rdv-notes">Commentaires (optionnel)</label>
+      <textarea id="rdv-notes" name="_notes" rows="4" placeholder="Contexte / objectif du rendez-vous"></textarea>
+    </div>
+
+    <!-- Honeypot anti-spam -->
+    <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+    <!-- Sujet personnalisé pour l'API -->
+    <input type="hidden" name="subject" id="rdv-subject">
+
+    <button class="btn primary" type="submit">Envoyer la demande</button>
+    <p class="form-status" aria-live="polite" role="status"></p>
+  </form>
+</section>
+
+</main>
 
     <!-- Footer -->
     <footer class="wrapper footer" role="contentinfo">

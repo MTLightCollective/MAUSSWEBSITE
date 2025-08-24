@@ -1,70 +1,58 @@
-# GitHub Pages + Custom Domain Starter
+# MAUSS — Cloudflare Pages + Functions (gratuit, avec GitHub)
 
-This repo is a minimal starter for hosting a website on **GitHub Pages** with a **custom domain**.
+Ce dossier est prêt à être importé sur **Cloudflare Pages** (gratuit).
+Il contient votre site (HTML/CSS/JS) et une **Function** `/api/contact` qui envoie l’email via l’API **Resend** (gratuite).
 
-## What’s inside
-- `index.html` – your homepage
-- `styles.css` – your styles
-- `script.js` – a tiny script
-- `CNAME` – sets your custom domain (edit it if your domain isn’t `xyz.ca`)
+## Déploiement (pas-à-pas)
+
+### 1) Créez un dépôt GitHub
+- Créez un repo vide (privé ou public).
+- Poussez-y **tout le contenu** de ce dossier à la racine (y compris `functions/`).
+
+### 2) Créez un compte Resend (gratuit)
+- Obtenez un **API Key** (RESEND_API_KEY).
+- (Optionnel mais recommandé) **Vérifiez votre domaine** `mauss.ca` chez Resend pour envoyer depuis `no-reply@mauss.ca` (ils vous donnent des enregistrements DNS DKIM à ajouter dans Cloudflare).
+  Tant que ce n'est pas vérifié, le `FROM` par défaut est `onboarding@resend.dev`.
+
+### 3) Créez un projet **Cloudflare Pages**
+- Dans Cloudflare → *Pages* → **Create a project** → **Connect to Git** → choisissez votre repo.
+- **Build command** : *(vide)* (site statique)
+- **Build output directory** : `/` (racine)
+- **Functions** : activées automatiquement grâce au dossier `functions/`
+
+### 4) Variables d’environnement (Pages → Settings → Environment Variables)
+Ajoutez au minimum :
+- `RESEND_API_KEY` = *votre clé API Resend*
+- `TO_ADDRESS` = *où vous recevez le message* (ex. `toi@mauss.ca`)
+- (Optionnel) `FROM_ADDRESS` = *expéditeur*, ex. `no-reply@mauss.ca` **après** vérification de domaine Resend
+
+**Déployez** le projet. Une URL `https://<nom>.pages.dev` s’affiche.
+
+### 5) Test
+```bash
+curl https://<nom>.pages.dev/api/health
+# -> {"ok":true}
+```
+
+### 6) Domaine personnalisé
+- Pages → **Custom Domains** → ajoutez **www.mauss.ca** (recommandé d’abord).
+- Comme votre DNS est déjà chez Cloudflare, l’enregistrement **CNAME** sera créé automatiquement.
+- (Optionnel) Créez une **règle de redirection** de `mauss.ca` vers `https://www.mauss.ca/*` (ou ajoutez l’apex aussi dans les Custom Domains).
+
+### 7) Utilisation
+Les formulaires du site postent vers **`/api/contact`** (même domaine).
+Le formulaire RDV envoie un **sujet** `Demande de rendez-vous – <Nom>` et un **message** comprenant date + créneau.
 
 ---
 
-## How to use (Web UI, no command line)
-
-1) **Create a repository**
-- Go to GitHub → New repository → Name it e.g. `my-website`
-- Set **Public** (Pages works best with public repos for beginners)
-- Click **Create repository**
-
-2) **Upload these files**
-- Click **Add file → Upload files**
-- Drag & drop all the files from this starter (including `CNAME`)
-- Click **Commit changes**
-
-3) **Enable GitHub Pages**
-- Go to **Settings → Pages**
-- Under **Build and deployment → Source**, choose **Deploy from a branch**
-- Set **Branch** to `main` and **/ (root)`**
-- Click **Save**
-- A preview URL like `https://<username>.github.io/my-website/` will appear
-
-4) **Set your custom domain**
-- On the same **Settings → Pages** screen, in **Custom domain**, enter **`xyz.ca`** and click **Save**.
-- Ensure **Enforce HTTPS** is checked.
-
-5) **Set your domain’s DNS**
-Open your domain registrar’s DNS panel and add the following records.
-
-### If you want **xyz.ca** (root) to be the main domain:
-Create four **A** records for `@` pointing to GitHub Pages IPs:
-```
-A    @    185.199.108.153
-A    @    185.199.109.153
-A    @    185.199.110.153
-A    @    185.199.111.153
-```
-
-Optionally, make `www.xyz.ca` redirect to `xyz.ca` using your registrar’s URL forwarding.
-
-### If you want **www.xyz.ca** as your main domain:
-- Set a **CNAME** record:
-```
-CNAME    www    <your-username>.github.io
-```
-- Change the `CNAME` file in this repo to contain `www.xyz.ca` instead of `xyz.ca`.
-
-> DNS changes can take some time to propagate.
-
-6) **Check it**
-- Visit `https://xyz.ca` (or `https://www.xyz.ca` if that’s your choice)
-- If you see the sample page, you’re done!
+## Fichiers clés
+- `functions/api/contact.ts` — Endpoint POST (CORS minimal, validation, appel Resend)
+- `functions/api/health.ts` — Vérification rapide
+- `index.html` / `styles.css` / `script.js` — votre site + formulaires intégrés
 
 ---
 
-## Edit your site
-- Change text in `index.html`
-- Add pages like `about.html` and link to them
-- Update styles in `styles.css`
-
-Have fun! ✨
+## Remarques
+- **Aucun mot de passe d’application Gmail requis**.
+- Si vous tenez à utiliser votre propre SMTP **sans** fournisseur API, utilisez plutôt **Netlify Functions** + `nodemailer` (mais vous devrez gérer l’App Password Gmail et la délivrabilité).
+- Avec Resend, pensez à **vérifier `mauss.ca`** pour un *From* propre (DKIM/DMARC via Cloudflare).

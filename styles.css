@@ -172,3 +172,44 @@ h1 .accent{ position:relative; white-space:nowrap; }
 .visually-hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
 hr{ border:none; border-top:1px dashed var(--border); margin:24px 0; }
 .small{ font-size:.9rem; color:var(--muted); }
+
+
+/* --- Contact/RDV cards --- */
+.card{
+  position:relative;
+  margin-top: clamp(22px, 6vh, 56px);
+  background:var(--card, #fff);
+  border:1px solid var(--border, #e6e6e6);
+  border-radius:24px;
+  box-shadow: var(--shadow, 0 12px 40px rgba(0,0,0,.05));
+  overflow:hidden;
+  padding: clamp(28px, 5vw, 72px);
+}
+.contact-form{ margin-top: 16px; }
+.form-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+}
+@media (max-width: 700px){
+  .form-grid{ grid-template-columns: 1fr; }
+}
+.field{ display:flex; flex-direction:column; gap:8px; }
+label{ font-weight:600; font-size:.95rem; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea{
+  appearance:none;
+  border:1px solid var(--border, #e6e6e6);
+  border-radius:12px;
+  background:#fff;
+  padding:14px 14px;
+  font: inherit;
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+textarea{ resize:vertical; }
+input:focus, select:focus, textarea:focus{ border-color:#c9c9c9; box-shadow: 0 0 0 4px rgba(0,0,0,.04); }
+.small{ font-size:.95rem; opacity:.9; }
+.visually-hidden{ position:absolute!important; clip:rect(1px,1px,1px,1px); width:1px; height:1px; overflow:hidden; }
+.form-status{ margin-top: 10px; min-height: 1.2em; }
+.form-status.success{ color: #0a7a2f; }
+.form-status.error{ color: #a31212; }
