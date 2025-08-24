@@ -1,20 +1,4 @@
-
-/* Minimal enhancement: dynamic year + mail subject builder */
-const yearSpan = document.querySelector('[data-year]');
-if (yearSpan) yearSpan.textContent = new Date().getFullYear().toString();
-
-const contactLink = document.querySelector('[data-mailto]');
-if (contactLink) {
-  const subj = encodeURIComponent('Prise de contact – Site web MAUSS CPA');
-  const body = encodeURIComponent('Bonjour,\n\nJe souhaite discuter de mes besoins en comptabilité.\n\n— Envoyé depuis la page en construction');
-  const href = contactLink.getAttribute('href');
-  if (href && href.startsWith('mailto:')) {
-    contactLink.setAttribute('href', href + '?subject=' + subj + '&body=' + body);
-  }
-}
-
-
-/* Contact form (POST to your /contact endpoint) */
+// ---------- Contact form ----------
 (function(){
   const cf = document.getElementById('contact-form');
   if (!cf) return;
@@ -58,8 +42,7 @@ if (contactLink) {
   });
 })();
 
-
-/* RDV form (subject + 30-min slots + POST via /contact) */
+// ---------- RDV form ----------
 (function(){
   const form = document.getElementById('rdv-form');
   if (!form) return;
@@ -72,7 +55,7 @@ if (contactLink) {
   const statusEl = form.querySelector('.form-status');
   const submitBtn = form.querySelector('button[type="submit"]');
 
-  // Min date = aujourd'hui
+  // Min date = aujourd'hui (local)
   const today = new Date();
   const tzoffset = today.getTimezoneOffset() * 60000;
   dateEl.min = new Date(Date.now()-tzoffset).toISOString().slice(0,10);
@@ -80,7 +63,6 @@ if (contactLink) {
   function pad2(n){ return String(n).padStart(2,'0'); }
   function toDDMMYYYY(iso){ const [y,m,d] = iso.split('-'); return `${d}-${m}-${y}`; }
 
-  // Génère les créneaux 30 min (09:00 → 16:30)
   function generateSlots(){
     slotEl.innerHTML = "";
     for (let h=9; h<=16; h++){
@@ -89,10 +71,9 @@ if (contactLink) {
         const endDate = new Date(0,0,0,h,m);
         endDate.setMinutes(endDate.getMinutes()+30);
         const endH = pad2(endDate.getHours()), endM = pad2(endDate.getMinutes());
-        const label = `${startH}:${startM}–${endH}:${endM}`;
         const opt = document.createElement('option');
         opt.value = `${startH}:${startM}`;
-        opt.textContent = label;
+        opt.textContent = `${startH}:${startM}–${endH}:${endM}`;
         slotEl.appendChild(opt);
       }
     }
@@ -120,7 +101,6 @@ if (contactLink) {
 
     subjectEl.value = `Demande de rendez-vous – ${name}`;
 
-    const [sh, sm] = slot.split(':');
     const begin = new Date(`${date}T${slot}:00`);
     const end = new Date(begin.getTime()+30*60000);
     const label = `${pad2(begin.getHours())}:${pad2(begin.getMinutes())}–${pad2(end.getHours())}:${pad2(end.getMinutes())}`;
@@ -158,17 +138,15 @@ if (contactLink) {
   });
 })();
 
-
-/* Enhance all [data-mailto] links by adding sensible defaults */
-(function(){
-  const links = document.querySelectorAll('[data-mailto]');
-  if (!links.length) return;
-  links.forEach((a) => {
-    const href = a.getAttribute('href') || '';
-    if (href.startsWith('mailto:') && !href.includes('subject=')) {
-      const subj = encodeURIComponent('Prise de contact – Site web MAUSS');
-      const body = encodeURIComponent('Bonjour,\n\nJe souhaite discuter de mes besoins.\n\n— Envoyé depuis mauss.ca');
-      a.setAttribute('href', href + '?subject=' + subj + '&body=' + body);
-    }
-  });
+// ---------- (Optionnel) Fallback vers Pages.dev si /api/health indisponible ----------
+(async function(){
+  try {
+    const res = await fetch("/api/health", { method: "GET" });
+    if (!res.ok) throw new Error("health not ok");
+  } catch {
+    const API = "https://mausswebsite.pages.dev/api/contact";
+    const forms = document.querySelectorAll('form[action="/api/contact"]');
+    forms.forEach(f => f.setAttribute("action", API));
+    console.log("[contact] Fallback action ->", API);
+  }
 })();
