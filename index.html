@@ -1,204 +1,26 @@
-<!doctype html>
-<html lang="fr-CA">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MAUSS CPA — Site en construction (Montréal)</title>
-  <meta name="description" content="Cabinet de CPA à Montréal. MAUSS CPA — Comptabilité, fiscalité et conseils. Prenez contact pendant que le site est en construction.">
-  <meta name="theme-color" content="#111111">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/Matthieu_Mauss_Logo_CPA.png" imagesrcset="Matthieu_Mauss_Logo_CPA.png 1x">
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_CA">
-  <meta property="og:title" content="MATTHIEU MAUSS CPA — Site en construction (Montréal)">
-  <meta property="og:description" content="Cabinet de CPA à Montréal. Comptabilité, fiscalité et conseils.">
-  <meta property="og:image" content="Matthieu_Mauss_Logo_CPA.png">
-  <meta property="og:image:alt" content="Logo MAUSS CPA">
-
-  <!-- LocalBusiness structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AccountingService",
-    "name": "MATTHIEU MAUSS CPA",
-    "image": "assets/Matthieu_Mauss_Logo_CPA.png",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Montréal",
-      "addressRegion": "QC",
-      "addressCountry": "CA"
-    },
-    "url": "https://www.mauss.ca",
-    "areaServed": "Québec",
-    "telephone": "",
-    "email": "matthieu.mauss@gmail.com"
-  }
-  </script>
-
-  <!--
-    Personnalisation rapide:
-    - Remplacez le mail dans l’attribut href de [data-mailto]
-    - Ajoutez votre téléphone dans le lien [data-tel]
-    - Remplacez l’URL de prise de RDV (#) si vous utilisez Calendly/YouCanBook.me
-  -->
-</head>
+<!doctype html><html><head><meta charset="utf-8"><title>MAUSS</title></head>
 <body>
-  <div class="bg-grid" aria-hidden="true"></div>
-
-  <div class="container">
-    <!-- Header -->
-    <header class="wrapper header">
-  <nav class="small">
-    <!-- On peut ajouter des liens sociaux si désiré -->
-  </nav>
-  <div class="brand">
-    <img src="assets/Matthieu_Mauss_Logo_CPA.png" width="240" height="84" alt="MAUSS CPA — Logo">
-  </div>
-</header>
-
-    <!-- Hero -->
-    <main class="wrapper hero" role="main">
-      <div class="decor" aria-hidden="true">
-        <div class="big"></div>
-        <div class="big"></div>
-      </div>
-
-      <div class="hero-inner">
-        <section>
-          <div class="kicker">MAUSS CPA</div>
-          <h1><span class="thin">Site</span> <span class="accent">en construction</span></h1>
-          <p class="subtitle">
-            Comptabilité | Fiscalité | Conseils. Basé à Montréal — accompagnement pragmatique pour
-            entrepreneurs, créatifs et PME.
-          </p>
-
-          <div class="badges" aria-label="Spécialités">
-            <span class="badge">États financiers</span>
-            <span class="badge">Déclarations d’impôt</span>
-            <span class="badge">TPS/TVQ & paies</span>
-            <span class="badge">Conseils & optimisation</span>
-          </div>
-
-          <div class="cta" role="group" aria-label="Actions principales">
-            <a class="btn primary" data-mailto href="mailto:contact@mauss.ca">Écrivez‑moi</a>
-            <a class="btn ghost" data-tel href="tel:">Appeler</a>
-            <a class="btn ghost" href="#" aria-label="Prendre rendez-vous en ligne">Prendre rendez‑vous</a>
-          </div>
-
-          <hr>
-
-          <p class="small">
-            Besoin d’un document, d’un devis ou d’un appel découverte? Je réponds rapidement, même pendant la mise à jour du site.
-          </p>
-        </section>
-
-        <aside class="info" aria-label="Coordonnées">
-          <div class="row">
-            <div class="label">Montréal</div>
-            <div>Québec, Canada<br><span class="small">Service à distance partout au Canada</span></div>
-          </div>
-          <div class="row">
-            <div class="label">Courriel</div>
-            <div><a data-mailto href="mailto:matthieu@mauss.ca">matthieu@mauss.ca</a></div>
-          </div>
-          <div class="row">
-            <div class="label">Téléphone</div>
-            <div><a data-tel href="tel:">—</a></div>
-          </div>
-          <div class="row">
-            <div class="label">Disponibilité</div>
-            <div>Lun–Ven · 9h–17h</div>
-          </div>
-        </aside>
-      </div>
+<main>
+  <form id="contact-form" action="/api/contact" method="POST">
+    <input name="name" required>
+    <input name="email" type="email" required>
+    <textarea name="message" required></textarea>
     
-<section id="contact" class="wrapper card" role="region" aria-labelledby="contact-title">
-  <h2 id="contact-title">Contact par courriel</h2>
-  <p class="small">Remplissez ce formulaire — c’est un simple envoi par courriel. Vous recevrez un message de confirmation à l’écran.</p>
-
-  <form id="contact-form" class="contact-form" action="/api/contact" method="POST" novalidate>
-    <div class="form-grid">
-      <div class="field">
-        <label for="cf-name">Nom complet</label>
-        <input id="cf-name" name="name" type="text" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="cf-email">Courriel</label>
-        <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required>
-      </div>
-      <div class="field">
-        <label for="cf-subject">Objet</label>
-        <input id="cf-subject" name="subject" type="text" placeholder="Votre objet" required>
-      </div>
-    </div>
-
-    <div class="field">
-      <label for="cf-message">Message</label>
-      <textarea id="cf-message" name="message" rows="6" required></textarea>
-    </div>
-
-    <!-- Honeypot (anti-spam) -->
-    <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off">
-
-    <button class="btn primary" type="submit">Envoyer le message</button>
-    <p class="form-status" aria-live="polite" role="status"></p>
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAABukGOeYRzV1hMDT" data-theme="light"></div>
+    <button type="submit">Envoyer</button>
+    <p class="form-status"></p>
   </form>
-</section>
-
-<section id="rdv" class="wrapper card" role="region" aria-labelledby="rdv-title">
-  <h2 id="rdv-title">Prendre un rendez-vous</h2>
-  <p class="small">Choisissez une date et un créneau de 30 minutes (entre 09:00 et 17:00). Je vous répondrai ensuite avec une invitation Google Meet.</p>
-
-  <form id="rdv-form" class="rdv-form" action="/api/contact" method="POST" novalidate>
-    <div class="form-grid">
-      <div class="field">
-        <label for="rdv-name">Nom complet</label>
-        <input id="rdv-name" name="name" type="text" required autocomplete="name">
-      </div>
-      <div class="field">
-        <label for="rdv-email">Courriel</label>
-        <input id="rdv-email" name="email" type="email" required autocomplete="email">
-      </div>
-      <div class="field">
-        <label for="rdv-date">Date souhaitée</label>
-        <input id="rdv-date" name="_date" type="date" required>
-      </div>
-      <div class="field">
-        <label for="rdv-slot">Créneau (30 min)</label>
-        <select id="rdv-slot" name="_slot" required></select>
-      </div>
-    </div>
-
-    <div class="field">
-      <label for="rdv-notes">Commentaires (optionnel)</label>
-      <textarea id="rdv-notes" name="_notes" rows="4" placeholder="Contexte / objectif du rendez-vous"></textarea>
-    </div>
-
-    <!-- Honeypot anti-spam -->
-    <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off">
-
-    <!-- Sujet personnalisé pour l'API -->
+  <form id="rdv-form" action="/api/contact" method="POST">
+    <input name="name" required>
+    <input name="email" type="email" required>
+    <input name="_date" type="date" required>
+    <select name="_slot"></select>
     <input type="hidden" name="subject" id="rdv-subject">
-
-    <button class="btn primary" type="submit">Envoyer la demande</button>
-    <p class="form-status" aria-live="polite" role="status"></p>
+    
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAABukGOeYRzV1hMDT" data-theme="light"></div>
+    <button type="submit">Envoyer</button>
+    <p class="form-status"></p>
   </form>
-</section>
-
 </main>
-
-    <!-- Footer -->
-    <footer class="wrapper footer" role="contentinfo">
-      <div class="dots" aria-hidden="true">
-        <span class="dot"></span><span class="dot"></span>
-      </div>
-      <div>© <span data-year></span> MATTHIEU MAUSS CPA · Tous droits réservés</div>
-    </footer>
-  </div>
-
-  <script type="module" src="script.js"></script>
-</body>
-</html>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</body></html>
