@@ -220,7 +220,7 @@ input:focus, select:focus, textarea:focus{ border-color:#c9c9c9; box-shadow: 0 0
 /* CSS ANIMATION APPARITION FORMULAIRE*/
 
  /* Fallback si tu préfères masquer via classe en plus de [hidden] */
-.is-hidden { display: none; } 
+.is-hidden { display: hidden; } 
 
 /* Petit effet */
 #contact:not(.is-hidden), #rdv:not(.is-hidden) {
