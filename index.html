@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MAUSS CPA — Site en construction (Montréal)</title>
+  <title>MAUSS CPA — Site en construction</title>
   <meta name="description" content="Cabinet de CPA à Montréal. MAUSS CPA — Comptabilité, fiscalité et conseils. Prenez contact pendant que le site est en construction.">
   <meta name="theme-color" content="#111111">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -27,7 +27,7 @@
     "image": "assets/Matthieu_Mauss_Logo_CPA.png",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Montréal",
+      "addressLocality": "Québec",
       "addressRegion": "QC",
       "addressCountry": "CA"
     },
@@ -36,14 +36,9 @@
     "email": "contact@mauss.ca"
   }
   </script>
-
-  <!--
-    Personnalisation rapide:
-    - Remplacez le mail dans l’attribut href de [data-mailto]
-    - Ajoutez votre téléphone dans le lien [data-tel]
-    - Remplacez l’URL de prise de RDV (#) si vous utilisez Calendly/YouCanBook.me
-  -->
+  <script src="/functions/api/cta-toggle.js" defer></script>
 </head>
+
 <body>
     <div class="bg-grid" aria-hidden="true"></div>
 
@@ -68,8 +63,8 @@
             <img src="assets/Matthieu_Mauss_Logo_CPA.png" width="240" height="84" alt="MAUSS CPA — Logo">
           <h1><span class="thin">Site</span> <span class="accent">en construction</span></h1>
           <p class="subtitle">
-            Comptabilité | Fiscalité | Conseils. Basé à Montréal — accompagnement pragmatique pour
-            entrepreneurs, créatifs et PME.
+            Comptabilité | Fiscalité | Conseils. Basé à Montréal et Québec — accompagnement pragmatique pour
+            entreprises créatives.
           </p>
 
           <div class="badges" aria-label="Spécialités">
@@ -79,10 +74,10 @@
             <span class="badge">Conseils & optimisation</span>
           </div>
 
-          <div class="cta" role="group" aria-label="Actions principales">
-            <a class="btn primary" data-mailto href="mailto:contact@mauss.ca">Écrivez‑moi</a>
-            <a class="btn ghost" data-tel href="tel:">Appeler</a>
-            <a class="btn ghost" href="#" aria-label="Prendre rendez-vous en ligne">Prendre rendez‑vous</a>
+          <div id="cta-buttons" class="cta" role="group" aria-label="Actions principales">
+            <a class="btn primary" data-target="contact" data-mailto href="#contact">Écrivez‑moi</a>
+            <!-- <a class="btn ghost" data-tel href="tel:">Appeler</a> -->
+            <a class="btn ghost" data-target="rdv" href="#rdv" aria-label="Prendre rendez-vous en ligne">Prendre rendez‑vous</a>
           </div>
 
           <hr>
@@ -107,7 +102,7 @@
         </aside>
       </div>
     <!-- Section Contact par courriel -->
-    <section id="contact" class="wrapper card" role="region" aria-labelledby="contact-title">
+    <section id="contact" class="wrapper card" role="region" aria-labelledby="contact-title" hidden>
       <h2 id="contact-title">Contact par courriel</h2>
       <p class="small">Remplissez ce formulaire — c’est un simple envoi de courriel (pas de réponse automatique).</p>
 
@@ -144,7 +139,7 @@
     </section>
 
     <!-- Section Prendre un rendez-vous -->
-    <section id="rdv" class="wrapper card" role="region" aria-labelledby="rdv-title">
+    <section id="rdv" class="wrapper card" role="region" aria-labelledby="rdv-title" hidden>
       <h2 id="rdv-title">Prendre un rendez-vous</h2>
       <p class="small">Choisissez une date et un créneau de 30 minutes (entre 09:00 et 17:00). Je vous répondrai ensuite avec une invitation Google Meet.</p>
 
