@@ -4,55 +4,61 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MAUSS CPA — Site en construction (Montréal)</title>
-  <meta name="description" content="Cabinet de CPA à Montréal. M...seils. Prenez contact pendant que le site est en construction.">
+  <meta name="description" content="Cabinet de CPA à Montréal. MAUSS CPA — Comptabilité, fiscalité et conseils. Prenez contact pendant que le site est en construction.">
   <meta name="theme-color" content="#111111">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/Matthieu_Mauss_Logo_CPA.png" imagesrcset="Matthieu_Mauss_Logo_CPA.png 1x">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Responsive visibility */
-    .only-mobile{ display:inline-flex; }
-    @media(min-width:768px){ .only-mobile{ display:none!important; } }
-
-    /* Masquer les sections jusqu'au clic */
-    .section-hidden{ display:none; }
-  </style>
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CA">
   <meta property="og:title" content="MATTHIEU MAUSS CPA — Site en construction (Montréal)">
-  <meta property="og:description" content="Cabinet de CPA à Montréal. Comptabilité, fiscalité, conseils. Prenez contact.">
-  <meta property="og:image" content="assets/Matthieu_Mauss_Logo_CPA.png">
-  <meta property="og:image:alt" content="Logo Matthieu Mauss CPA">
-  <meta property="og:url" content="https://mauss.ca">
+  <meta property="og:description" content="Cabinet de CPA à Montréal. Comptabilité, fiscalité et conseils.">
+  <meta property="og:image" content="Matthieu_Mauss_Logo_CPA.png">
+  <meta property="og:image:alt" content="Logo MAUSS CPA">
 
-  <!-- Schema.org -->
+  <!-- LocalBusiness structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AccountingService",
     "name": "MATTHIEU MAUSS CPA",
-    "url": "https://mauss.ca",
-    "image": "https://mauss.ca/assets/Matthieu_Mauss_Logo_CPA.png",
-    "address": { "@type": "PostalAddress", "addressLocality": "Montréal", "addressRegion": "QC", "addressCountry": "CA" },
-    "areaServed": "CA-QC",
-    "sameAs": ["https://www.linkedin.com/","https://maps.google.com/"]
+    "image": "assets/Matthieu_Mauss_Logo_CPA.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Montréal",
+      "addressRegion": "QC",
+      "addressCountry": "CA"
+    },
+    "url": "https://www.mauss.ca",
+    "areaServed": "Québec",
+    "email": "contact@mauss.ca"
   }
   </script>
+
+  <!--
+    Personnalisation rapide:
+    - Remplacez le mail dans l’attribut href de [data-mailto]
+    - Ajoutez votre téléphone dans le lien [data-tel]
+    - Remplacez l’URL de prise de RDV (#) si vous utilisez Calendly/YouCanBook.me
+  -->
 </head>
 <body>
-  <header id="header">
-    <div class="wrapper">
-      <a class="brand" href="/">
-        <img src="assets/Matthieu_Mauss_Logo_CPA.png" width="160" height="56" alt="MAUSS CPA — Logo">
-      </a>
-    </div>
-  </header>
+    <div class="bg-grid" aria-hidden="true"></div>
 
-  <main id="content">
-    <section class="hero wrapper">
-      <div class="bg-dots" aria-hidden="true">
+  <div class="container">
+    <!-- Header -->
+    <header class="wrapper header">
+  <nav class="small">
+    <!-- On peut ajouter des liens sociaux si désiré -->
+  </nav>
+  
+</header>
+
+  <main class="wrapper hero" role="main">
+    <!-- Ici, conservez votre contenu existant (hero, services, etc.) -->
+    <div class="decor" aria-hidden="true">
         <div class="big"></div>
         <div class="big"></div>
       </div>
@@ -73,30 +79,17 @@
             <span class="badge">Conseils & optimisation</span>
           </div>
 
-          <!-- CTA : sur mobile 3 boutons, sur desktop 2 (Appeler masqué) -->
           <div class="cta" role="group" aria-label="Actions principales">
-            <!-- Écrivez-moi : apparaît mobile + desktop ; se comporte en mailto sur mobile, onglet sur desktop -->
-            <a class="btn ghost tab-toggle"
-               data-action="write"
-               data-tab="contact"
-               aria-controls="contact"
-               aria-pressed="false"
-               href="mailto:contact@mauss.ca">Écrivez-moi</a>
-
-            <!-- Appeler : uniquement mobile -->
-            <a class="btn ghost only-mobile"
-               data-action="call"
-               data-tel
-               href="tel:">Appeler</a>
-
-            <!-- Prendre rendez-vous : mobile + desktop, ouvre la section RDV -->
-            <a class="btn ghost tab-toggle"
-               data-action="book"
-               data-tab="rdv"
-               aria-controls="rdv"
-               aria-pressed="false"
-               href="#" role="button">Prendre rendez-vous</a>
+            <a class="btn primary" data-mailto href="mailto:contact@mauss.ca">Écrivez‑moi</a>
+            <a class="btn ghost" data-tel href="tel:">Appeler</a>
+            <a class="btn ghost" href="#" aria-label="Prendre rendez-vous en ligne">Prendre rendez‑vous</a>
           </div>
+
+          <hr>
+
+          <p class="small">
+            Besoin d’un document, d’un devis ou d’un appel découverte? Je réponds rapidement, même pendant la mise à jour du site.
+          </p>
         </section>
 
         <aside class="info" aria-label="Coordonnées">
@@ -106,22 +99,15 @@
           </div>
           <div class="row">
             <div class="label">Courriel</div>
-            <div><a data-mailto href="mailto:matthieu@mauss.ca">matthieu@mauss.ca</a></div>
+            <div><a data-mailto href="mailto:contact@mauss.ca">contact@mauss.ca</a></div>
           </div>
-          <div class="row">
-            <div class="label">Téléphone</div>
-            <div><a data-tel href="tel:">—</a></div>
-          </div>
-          <div class="row">
             <div class="label">Disponibilité</div>
-            <div>Lun–Ven · 9h–17h</div>
+            <div><span>Lun–Ven · 9h–17h</span></div>
           </div>
         </aside>
       </div>
-    </section>
-
-    <!-- CONTACT — MASQUÉ PAR DÉFAUT -->
-    <section id="contact" class="wrapper card section-hidden" role="region" aria-labelledby="contact-title" aria-hidden="true">
+    <!-- Section Contact par courriel -->
+    <section id="contact" class="wrapper card" role="region" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact par courriel</h2>
       <p class="small">Remplissez ce formulaire — c’est un simple envoi de courriel (pas de réponse automatique).</p>
 
@@ -143,22 +129,24 @@
 
         <div class="field">
           <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="6" placeholder="Bonjour Matthieu, ..." required></textarea>
+          <textarea id="cf-message" name="message" rows="6" required></textarea>
         </div>
 
-        <div class="field">
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAA..." data-theme="auto"></div>
-        </div>
+        <!-- Honeypot (anti-spam) -->
+        <input type="text" class="visually-hidden" tabindex="-1" autocomplete="off">
 
-        <button class="btn primary" type="submit">Envoyer</button>
+        <!-- Turnstile -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABukGOeYRzV1hMDT" data-theme="light"></div>
+
+        <button class="btn primary" type="submit">Envoyer le message</button>
         <p class="form-status" aria-live="polite" role="status"></p>
       </form>
     </section>
 
-    <!-- RDV — MASQUÉ PAR DÉFAUT -->
-    <section id="rdv" class="wrapper card section-hidden" role="region" aria-labelledby="rdv-title" aria-hidden="true">
+    <!-- Section Prendre un rendez-vous -->
+    <section id="rdv" class="wrapper card" role="region" aria-labelledby="rdv-title">
       <h2 id="rdv-title">Prendre un rendez-vous</h2>
-      <p class="small">Choisissez une date et un créneau de 30 minutes (9:00–17:00). Je vous répondrai ensuite avec une invitation Google Meet.</p>
+      <p class="small">Choisissez une date et un créneau de 30 minutes (entre 09:00 et 17:00). Je vous répondrai ensuite avec une invitation Google Meet.</p>
 
       <form id="rdv-form" class="rdv-form" action="/api/contact" method="POST" novalidate>
         <div class="form-grid">
@@ -181,17 +169,18 @@
         </div>
 
         <div class="field">
-          <label for="rdv-subject">Objet</label>
-          <input id="rdv-subject" name="subject" type="text" placeholder="Ex.: Consultation fiscale">
-        </div>
-        <div class="field">
-          <label for="rdv-notes">Notes</label>
-          <textarea id="rdv-notes" name="message" rows="5" placeholder="Quelques précisions pour préparer l’appel…"></textarea>
+          <label for="rdv-notes">Commentaires (optionnel)</label>
+          <textarea id="rdv-notes" name="_notes" rows="4" placeholder="Contexte / objectif du rendez-vous"></textarea>
         </div>
 
-        <div class="field">
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAA..." data-theme="auto"></div>
-        </div>
+        <!-- Sujet personnalisé pour l'API (caché) -->
+        <input type="hidden" name="subject" id="rdv-subject">
+
+        <!-- Honeypot anti-spam -->
+        <input type="text" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+        <!-- Turnstile -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABukGOeYRzV1hMDT" data-theme="light"></div>
 
         <button class="btn primary" type="submit">Envoyer la demande</button>
         <p class="form-status" aria-live="polite" role="status"></p>
@@ -202,72 +191,6 @@
   <footer class="wrapper">
     <p class="small">© 2025 MATTHIEU MAUSS</p>
   </footer>
-
-  <!-- Logique d’onglets + état actif (noir) -->
-  <script>
-  (function(){
-    const mqDesktop = window.matchMedia('(min-width: 768px)');
-    const cta = document.querySelector('.cta');
-    if (!cta) return;
-
-    const btns = Array.from(cta.querySelectorAll('.btn'));
-    const tabBtns = Array.from(cta.querySelectorAll('.tab-toggle'));
-    const sections = {
-      contact: document.getElementById('contact'),
-      rdv: document.getElementById('rdv')
-    };
-
-    function setActive(btn){
-      btns.forEach(b => b.classList.remove('primary'));
-      btn.classList.add('primary');
-      tabBtns.forEach(b => b.setAttribute('aria-pressed', String(b===btn)));
-    }
-
-    function showSection(id){
-      Object.keys(sections).forEach(k => {
-        const el = sections[k];
-        if (!el) return;
-        if (k===id){
-          el.classList.remove('section-hidden');
-          el.setAttribute('aria-hidden','false');
-        } else {
-          el.classList.add('section-hidden');
-          el.setAttribute('aria-hidden','true');
-        }
-      });
-    }
-
-    // Démarrage : aucune section visible
-    showSection(null);
-
-    cta.addEventListener('click', function(e){
-      const target = e.target.closest('.btn');
-      if (!target) return;
-      const action = target.getAttribute('data-action');
-
-      // Toujours marquer le dernier bouton cliqué en noir
-      setActive(target);
-
-      if (action === 'write'){
-        // Desktop : empêcher le mailto et ouvrir la section "contact"
-        if (mqDesktop.matches){
-          e.preventDefault();
-          showSection('contact');
-          sections.contact?.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-        // Mobile : comportement mailto inchangé
-      } else if (action === 'book'){
-        // Tous appareils : ouvrir la section "rdv"
-        e.preventDefault();
-        showSection('rdv');
-        sections.rdv?.scrollIntoView({behavior:'smooth', block:'start'});
-      } else if (action === 'call'){
-        // Mobile : laisser faire le tel:, et masquer les sections
-        showSection(null);
-      }
-    });
-  })();
-  </script>
 
   <script src="script.js" defer></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
