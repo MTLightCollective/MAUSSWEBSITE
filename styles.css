@@ -15,7 +15,6 @@ html { scroll-behavior: smooth; }
   --header-h: 72px;
 }
 
-
 *{ box-sizing:border-box; }
 html{ font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
       color:var(--fg); background:var(--bg); }
@@ -225,9 +224,6 @@ input:focus, select:focus, textarea:focus{ border-color:#c9c9c9; box-shadow: 0 0
 /* Petit effet */
 #contact:not(.is-hidden), #rdv:not(.is-hidden) {
   animation: fadeIn .2s ease-out;
-}
-#contact, #rdv { 
-  scroll-margin-top: calc(var(--header-h) + 8px);  /* évite que le header masque le titre */
 }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); }
                     to   { opacity: 1; transform: translateY(0); } }
